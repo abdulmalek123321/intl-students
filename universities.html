@@ -1,72 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Malaysian Universities</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f9fafb;
-      margin: 0;
-      padding: 0;
-    }
-    .navbar {
-      background-color: #0f172a;
-      padding: 15px 30px;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .navbar a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: bold;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 30px;
-    }
-    h1 {
-      color: #1e40af;
-    }
-    .university {
-      margin-left: 20px;
-      line-height: 1.6;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Malaysian Universities - ISES</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-  <div class="navbar">
-    <div><strong>🇲🇾 Malaysia Student Guide</strong></div>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="visa.html">Visa</a>
-      <a href="housing.html">Housing</a>
-      <a href="universities.html">Universities</a>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">ISES</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="universities.html">Universities</a></li>
+          <li class="nav-item"><a class="nav-link" href="visa.html">Visa</a></li>
+          <li class="nav-item"><a class="nav-link" href="housing.html">Housing</a></li>
+          <li class="nav-item"><a class="nav-link" href="cost.html">Cost</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="ar/universities.html">عربي</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Top Universities in Malaysia</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+      <!-- University 1 -->
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Universiti Tun Hussein Onn Malaysia (UTHM)</h5>
+            <p class="card-text">A public technical university located in Johor, focusing on engineering and technology.</p>
+            <a href="https://www.uthm.edu.my" class="btn btn-primary" target="_blank">Visit Website</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- University 2 -->
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Universiti Malaya (UM)</h5>
+            <p class="card-text">Malaysia's oldest university, ranked among the top in Asia.</p>
+            <a href="https://www.um.edu.my" class="btn btn-primary" target="_blank">Visit Website</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- University 3 -->
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Universiti Teknologi Malaysia (UTM)</h5>
+            <p class="card-text">Top-ranked for engineering and technology, located in Johor and Kuala Lumpur.</p>
+            <a href="https://www.utm.my" class="btn btn-primary" target="_blank">Visit Website</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- More universities can be added here... -->
+
     </div>
   </div>
 
-  <div class="container">
-    <h1>🎓 Universities in Malaysia</h1>
-    <p>Here are some of the top universities in Malaysia for international students:</p>
+  <!-- Footer -->
+  <footer class="bg-light text-center py-4 mt-5">
+    <div class="container">
+      <p class="mb-0">© 2025 ISES - Built with ❤️ by Abdulmalek Taha</p>
+    </div>
+  </footer>
 
-    <div class="university">- Universiti Tun Hussein Onn Malaysia (UTHM)</div>
-    <div class="university">- Universiti Teknologi Malaysia (UTM)</div>
-    <div class="university">- Universiti Malaya (UM)</div>
-    <div class="university">- International Islamic University Malaysia (IIUM)</div>
-    <div class="university">- Universiti Sains Malaysia (USM)</div>
-    <div class="university">- Multimedia University (MMU)</div>
-    <div class="university">- Asia Pacific University (APU)</div>
-    <div class="university">- Taylor’s University</div>
-    <div class="university">- Sunway University</div>
-    <div class="university">- University of Cyberjaya</div>
-
-    <p>📚 We are continuously adding more universities and details. Stay tuned!</p>
-    <p><a href="index.html">← Back to Home</a></p>
-  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

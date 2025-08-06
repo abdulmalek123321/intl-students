@@ -1,86 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Housing for International Students in Malaysia</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f3f4f6;
-      margin: 0;
-      padding: 0;
-    }
-    .navbar {
-      background-color: #0f172a;
-      padding: 15px 30px;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .navbar a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: bold;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 30px;
-    }
-    h1, h2 {
-      color: #1e40af;
-    }
-    ul {
-      line-height: 1.7;
-    }
-  </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Student Housing - ISES Malaysia</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
-  <div class="navbar">
-    <div><strong>🏠 Housing Malaysia</strong></div>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="visa.html">Visa</a>
-      <a href="housing.html">Housing</a>
-      <a href="universities.html">Universities</a>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">ISES</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="universities.html">Universities</a></li>
+          <li class="nav-item"><a class="nav-link" href="visa.html">Visa</a></li>
+          <li class="nav-item"><a class="nav-link active" href="housing.html">Housing</a></li>
+          <li class="nav-item"><a class="nav-link" href="cost.html">Cost</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="ar/housing.html">عربي</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <h2 class="text-center mb-4">🏠 Student Housing Options in Malaysia</h2>
+    <p class="lead text-center">
+      Choose between on‑campus or off‑campus housing. Below are detailed options for UTHM, UM, and UTM.
+    </p>
+
+    <!-- Housing Choice Buttons -->
+    <div class="text-center mb-4">
+      <button id="onCampusBtn" class="btn btn-outline-primary me-2">On-Campus</button>
+      <button id="offCampusBtn" class="btn btn-outline-secondary">Off-Campus</button>
+    </div>
+
+    <!-- On-Campus Section -->
+    <div id="onCampus" class="housing-section">
+      <h4 class="mb-3">🏫 On-Campus Accommodation</h4>
+      <!-- UTM -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">UTM (Universiti Teknologi Malaysia)</h5>
+          <p class="card-text">
+            Offers 10 residential colleges hosting up to 14,774 students plus 301 housing units for families. Furnished flats or townhouses shared by 2–3 students with basic amenities. :contentReference[oaicite:1]{index=1}
+          </p>
+        </div>
+      </div>
+      <!-- UM -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">UM (University of Malaya)</h5>
+          <p class="card-text">
+            Offers 11 in‑campus residential colleges (plus 2 off‑campus). Basic hostels, some include cafeterias and common areas. Secure and managed by university. :contentReference[oaicite:2]{index=2}
+          </p>
+        </div>
+      </div>
+      <!-- UTHM -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">UTHM (Universiti Tun Hussein Onn Malaysia)</h5>
+          <p class="card-text">
+            University-run dormitories available on campus. Managed via Student Housing and Transportation Centre. Functional and reliable. :contentReference[oaicite:3]{index=3}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Off-Campus Section -->
+    <div id="offCampus" class="housing-section d-none">
+      <h4 class="mb-3">🏠 Off-Campus Accommodation</h4>
+      <!-- UTM -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">UTM – Johor Bahru Area</h5>
+          <p class="card-text">
+            Areas like Taman Universiti, Kangkar Pulai offer rooms for RM 350‑600/month or flats RM 500‑800. Often furnished, near shops and transport. :contentReference[oaicite:4]{index=4}
+          </p>
+        </div>
+      </div>
+      <!-- UM / KL -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">UM – Kuala Lumpur Area</h5>
+          <p class="card-text">
+            Numerous shared apartments, PBSA, or studios available. Most rent between RM 700–1300/month. Examples: Goodwood Residence, Tiara Imperio. :contentReference[oaicite:5]{index=5}
+          </p>
+        </div>
+      </div>
+      <!-- UTHM -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">UTHM – Batu Pahat Area</h5>
+          <p class="card-text">
+            Local hostels, rental houses, and apartments near campus. Monthly rates vary; expect RM 300–700 depending on facilities and distance.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="container">
-    <h1>🏡 Housing Guide for International Students in Malaysia</h1>
+  <!-- Footer -->
+  <footer class="bg-light text-center py-4">
+    <div class="container">
+      <p class="mb-0">© 2025 ISES Malaysia – Built with ❤️ by Abdulmalek Taha</p>
+    </div>
+  </footer>
 
-    <h2>UTHM – Batu Pahat</h2>
-    <ul>
-      <li><strong>In-campus:</strong> Kolej Kediaman Tun Dr. Ismail (KK TDI)</li>
-      <li><strong>Nearby:</strong> Taman Universiti, Parit Raja, Taman Sri Sulong</li>
-      <li><strong>Rent:</strong> RM 200 – RM 500/month (shared rooms)</li>
-    </ul>
-
-    <h2>UTM – Skudai</h2>
-    <ul>
-      <li><strong>In-campus:</strong> Kolej 9 & 10, Kolej Tuanku Canselor</li>
-      <li><strong>Nearby:</strong> Taman Universiti, Taman Sri Pulai Perdana</li>
-      <li><strong>Rent:</strong> RM 300 – RM 600/month</li>
-    </ul>
-
-    <h2>🌐 Private Housing Platforms</h2>
-    <ul>
-      <li><a href="https://www.mudah.my">Mudah.my</a> – Malaysia's largest classifieds</li>
-      <li><a href="https://www.ibilik.my">iBilik.my</a> – Find rooms across Malaysia</li>
-      <li>Facebook groups (search: “Student Housing Malaysia”)</li>
-    </ul>
-
-    <h2>💡 Tips for Choosing Housing</h2>
-    <ul>
-      <li>Always visit the room or request a video tour before paying.</li>
-      <li>Check distance to your campus and access to transport.</li>
-      <li>Prefer staying with other international students during your first months.</li>
-    </ul>
-
-    <p><a href="index.html">← Back to Home</a></p>
-  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('onCampusBtn').onclick = () => {
+      document.getElementById('onCampus').classList.remove('d-none');
+      document.getElementById('offCampus').classList.add('d-none');
+    };
+    document.getElementById('offCampusBtn').onclick = () => {
+      document.getElementById('offCampus').classList.remove('d-none');
+      document.getElementById('onCampus').classList.add('d-none');
+    };
+  </script>
 </body>
 </html>

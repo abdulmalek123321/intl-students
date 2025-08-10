@@ -2,58 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ISES - Interactive Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ISES Map</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
+  <!-- Custom CSS -->
   <style>
+    /* Full height map */
     #map {
-      height: 600px;
-      width: 100%;
+      height: 100vh;
+    }
+
+    /* Pulse animation for the button */
+    .pulse-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7); }
+      70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(0, 123, 255, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">ISES</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <!-- Map container -->
+  <div id="map"></div>
 
-      <div class="collapse navbar-collapse" id="mainNavbar">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="universities.html">Universities</a></li>
-          <li class="nav-item"><a class="nav-link" href="visa.html">Visa</a></li>
-          <li class="nav-item"><a class="nav-link" href="housing.html">Housing</a></li>
-          <li class="nav-item"><a class="nav-link" href="cost.html">Cost</a></li>
-          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-          <li class="nav-item"><a class="nav-link active" href="map.html">Interactive Map</a></li>
-          <li class="nav-item"><a class="nav-link" href="ar/index.html">عربي</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Map Container -->
-  <div class="container mt-4">
-    <h2 class="text-center mb-4">Universities Map</h2>
-    <div id="map"></div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="bg-light text-center py-4 mt-5">
-    <div class="container">
-      <p class="mb-0">© 2025 ISES - Built with ❤️ by Abdulmalek Taha</p>
-    </div>
-  </footer>
+  <!-- Locate Me button -->
+  <button id="locate-btn" class="btn btn-primary pulse-btn">
+    📍 Locate Me
+  </button>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -61,21 +50,29 @@
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
+  <!-- Map Script -->
   <script>
     // Initialize map
-    var map = L.map('map').setView([3.139, 101.6869], 7); // Centered on Malaysia
+    var map = L.map('map').setView([1.8652, 103.0836], 13); // UTHM coordinates
 
-    // Add OpenStreetMap tile layer
+    // Add OpenStreetMap tiles
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    // Example: Add marker for University of Malaya
-    L.marker([3.1209, 101.6544])
-      .addTo(map)
-      .bindPopup("<b>University of Malaya</b><br>Kuala Lumpur")
-      .openPopup();
-  </script>
+    // Locate Me functionality
+    document.getElementById('locate-btn').addEventListener('click', function() {
+      map.locate({ setView: true, maxZoom: 16 });
 
+      map.on('locationfound', function(e) {
+        L.marker(e.latlng).addTo(map)
+          .bindPopup("You are here!").openPopup();
+      });
+
+      map.on('locationerror', function() {
+        alert("Location access denied.");
+      });
+    });
+  </script>
 </body>
 </html>

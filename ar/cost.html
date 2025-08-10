@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ISES - التكلفة</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="/ar/index.html">ISES</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/ar/universities.html">الجامعات</a></li>
+          <li class="nav-item"><a class="nav-link" href="/ar/visa.html">التأشيرة</a></li>
+          <li class="nav-item"><a class="nav-link" href="/ar/housing.html">السكن</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/ar/cost.html">التكلفة</a></li>
+          <li class="nav-item"><a class="nav-link" href="/ar/faq.html">الأسئلة الشائعة</a></li>
+          <!-- Language toggle button -->
+          <li class="nav-item">
+            <button id="langToggle" class="btn btn-light btn-sm">English</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">تكلفة المعيشة في ماليزيا للطلاب الدوليين</h1>
+    <p>تكلفة المعيشة تختلف حسب المدينة ونمط الحياة، ولكن هذه تقديرات عامة:</p>
+    <ul>
+      <li><strong>الإيجار الشهري:</strong> من 300 إلى 800 رينجيت ماليزي (MYR) للشقق المشتركة أو السكن الجامعي.</li>
+      <li><strong>الطعام:</strong> حوالي 400 إلى 700 MYR شهريًا إذا كنت تعتمد على الأكل من المطاعم المحلية أو الطبخ الذاتي.</li>
+      <li><strong>المواصلات:</strong> 100 إلى 200 MYR باستخدام الحافلات أو الدراجات.</li>
+      <li><strong>الكتب والمواد الدراسية:</strong> حوالي 100 إلى 300 MYR في الفصل الدراسي.</li>
+      <li><strong>الاتصالات والإنترنت:</strong> 50 إلى 100 MYR شهريًا.</li>
+    </ul>
+    <p>ننصح بالتخطيط المالي الجيد ومتابعة العروض والخصومات التي تقدمها الجامعات.</p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-light text-center py-4 mt-5">
+    <div class="container">
+      <p class="mb-0">© 2025 ISES - تم التطوير بحب بواسطة عبد المالك طه</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Language toggle script -->
+  <script>
+    const langToggleBtn = document.getElementById('langToggle');
+    langToggleBtn.addEventListener('click', () => {
+      window.location.href = '/cost.html';
+    });
+  </script>
+
+</body>
+</html>

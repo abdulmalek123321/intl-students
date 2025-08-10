@@ -2,56 +2,81 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>الطلاب الدوليون - ماليزيا</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f4f4f4;
-      text-align: right;
-      padding: 2rem;
-      direction: rtl;
-    }
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #0d47a1;
-      font-weight: bold;
-    }
-    .lang-switch {
-      text-align: left;
-      margin-bottom: 1rem;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ISES - بوابة الطلاب الدوليين</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- 🔀 رابط التحويل إلى اللغة الإنجليزية -->
-  <div class="lang-switch">
-    <a href="/en/index.html">English</a>
-  </div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">ISES</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <nav>
-    <a href="index.html">الصفحة الرئيسية</a> |
-    <a href="visa.html">التأشيرة</a> |
-    <a href="housing.html">السكن</a> |
-    <a href="universities.html">الجامعات</a>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="universities.html">الجامعات</a></li>
+          <li class="nav-item"><a class="nav-link" href="visa.html">التأشيرة</a></li>
+          <li class="nav-item"><a class="nav-link" href="housing.html">السكن</a></li>
+          <li class="nav-item"><a class="nav-link" href="cost.html">التكاليف</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">الأسئلة الشائعة</a></li>
+          <!-- زر تبديل اللغة -->
+          <li class="nav-item">
+            <button id="langToggle" class="btn btn-light btn-sm">English</button>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
 
-  <h1>🌍 مرحبًا بالطلاب الدوليين</h1>
-  <p>يساعدك هذا الموقع على الاستعداد للحياة الجامعية في ماليزيا 🇲🇾</p>
+  <!-- المحتوى الرئيسي -->
+  <div class="container mt-5 text-center">
+    <h1>مرحبًا بكم في ISES</h1>
+    <p class="lead">دليلك للدراسة في ماليزيا 🇲🇾</p>
+    <a href="universities.html" class="btn btn-primary btn-lg mt-3">استكشف الجامعات</a>
+  </div>
 
-  <ul>
-    <li>🎓 إرشادات الحصول على الفيزا</li>
-    <li>🏠 نصائح السكن والمبيت</li>
-    <li>🛒 التكيف مع الحياة اليومية</li>
-    <li>🚌 التنقل والمواصلات في ماليزيا</li>
-  </ul>
-
-  <p>اختر القسم الذي تريده من القائمة أعلاه للبدء.</p>
-
-  <footer>
-    <p>بُني بحب ❤️ بواسطة عبد المالك طه - طالب تكنولوجيا المعلومات @ UTHM</p>
+  <!-- الفوتر -->
+  <footer class="bg-light text-center py-4 mt-5">
+    <div class="container">
+      <p class="mb-0">© 2025 ISES - تم التطوير بحب من عبد المالك طه</p>
+    </div>
   </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- سكربت تبديل اللغة -->
+  <script>
+    const langToggleBtn = document.getElementById('langToggle');
+    let currentLang = localStorage.getItem('siteLang') || 'ar';
+
+    function updateButtonText() {
+      if (currentLang === 'ar') {
+        langToggleBtn.textContent = 'English';
+      } else {
+        langToggleBtn.textContent = 'عربي';
+      }
+    }
+
+    updateButtonText();
+
+    langToggleBtn.addEventListener('click', () => {
+      currentLang = currentLang === 'ar' ? 'en' : 'ar';
+      localStorage.setItem('siteLang', currentLang);
+      updateButtonText();
+
+      if (currentLang === 'ar') {
+        window.location.href = '/ar/index.html';  // النسخة العربية
+      } else {
+        window.location.href = '/index.html'; // النسخة الإنجليزية
+      }
+    });
+  </script>
+
 </body>
 </html>

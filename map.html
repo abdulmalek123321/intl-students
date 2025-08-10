@@ -1,77 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Map - Universities in Malaysia</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-        #map {
-            height: 100vh;
-            width: 100%;
-        }
-        nav {
-            position: absolute;
-            z-index: 1000;
-            width: 100%;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Map - Malaysia Universities</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  
+  <style>
+    #map {
+      height: 600px;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Malaysian Universities Map</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">My Website</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="housing.html">Housing</a></li>
+        <li class="nav-item"><a class="nav-link" href="visa.html">Visa</a></li>
+        <li class="nav-item"><a class="nav-link active" href="map.html">Interactive Map</a></li>
+        <li class="nav-item"><a class="nav-link" href="costs.html">Costs of Living</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-    <!-- Map Container -->
-    <div id="map"></div>
+<!-- Map Container -->
+<div class="container mt-4">
+  <h2>Interactive Map of Malaysian Universities</h2>
+  <div id="map"></div>
+</div>
 
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-        // Initialize map centered in Malaysia
-        var map = L.map('map').setView([4.2105, 101.9758], 6);
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-        // Add OpenStreetMap tiles
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors'
-        }).addTo(map);
+<script>
+  // Initialize the map and set view to Malaysia
+  var map = L.map('map').setView([3.1390, 101.6869], 7);
 
-        // University locations
-        var universities = [
-            { name: "Universiti Teknologi Malaysia (UTM)", coords: [1.561111, 103.638889] },
-            { name: "Universiti Tun Hussein Onn Malaysia (UTHM)", coords: [1.8575, 103.085] },
-            { name: "Universiti Malaya (UM)", coords: [3.1201, 101.6544] }
-        ];
+  // Add OpenStreetMap tile layer
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
 
-        // Add markers to the map
-        universities.forEach(function(uni) {
-            L.marker(uni.coords)
-                .addTo(map)
-                .bindPopup(`<b>${uni.name}</b>`)
-                .openPopup();
-        });
-    </script>
+  // Add markers for universities
+  var universities = [
+    {
+      name: "University of Malaya (UM)",
+      coords: [3.1205, 101.6544],
+      link: "https://www.um.edu.my/"
+    },
+    {
+      name: "Universiti Teknologi Malaysia (UTM)",
+      coords: [1.5594, 103.6373],
+      link: "https://www.utm.my/"
+    },
+    {
+      name: "Universiti Tun Hussein Onn Malaysia (UTHM)",
+      coords: [1.8545, 103.0856],
+      link: "https://www.uthm.edu.my/"
+    }
+  ];
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  universities.forEach(function(uni) {
+    L.marker(uni.coords)
+      .addTo(map)
+      .bindPopup("<b>" + uni.name + "</b><br><a href='" + uni.link + "' target='_blank'>Visit Website</a>");
+  });
+</script>
 
 </body>
 </html>

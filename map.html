@@ -1,78 +1,185 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ISES Map</title>
+  <title>ISES - Interactive Map</title>
 
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
   <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-sA+e2tvjodZ1c0q7QKzWz81ZIGxTxTQC50B2dMy7uXQ="
+    crossorigin=""
+  />
 
-  <!-- Custom CSS -->
   <style>
-    /* Full height map */
-    #map {
-      height: 100vh;
+    #map { height: 600px; }
+    body[dir="rtl"] {
+      direction: rtl;
+      text-align: right;
     }
-
-    /* Pulse animation for the button */
-    .pulse-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7); }
-      70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(0, 123, 255, 0); }
-      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
+    .lang-toggle {
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <!-- Map container -->
-  <div id="map"></div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">ISES</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <!-- Locate Me button -->
-  <button id="locate-btn" class="btn btn-primary pulse-btn">
-    📍 Locate Me
-  </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto" id="nav-links">
+          <li class="nav-item"><a class="nav-link" href="universities.html" data-en="Universities" data-ar="الجامعات">Universities</a></li>
+          <li class="nav-item"><a class="nav-link" href="visa.html" data-en="Visa" data-ar="التأشيرة">Visa</a></li>
+          <li class="nav-item"><a class="nav-link active" href="map.html" data-en="Map" data-ar="الخريطة">Map</a></li>
+          <li class="nav-item"><a class="nav-link" href="housing.html" data-en="Housing" data-ar="السكن">Housing</a></li>
+          <li class="nav-item"><a class="nav-link" href="cost.html" data-en="Cost" data-ar="التكلفة">Cost</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html" data-en="FAQ" data-ar="الأسئلة">FAQ</a></li>
+          <li class="nav-item">
+            <a class="nav-link lang-toggle" id="langToggle" href="#">عربي</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container my-4">
+    <h1 id="pageTitle" data-en="Interactive Map" data-ar="خريطة تفاعلية">Interactive Map</h1>
+    <p id="description" data-en="Explore important locations for international students at UTHM." data-ar="استكشف المواقع المهمة للطلاب الدوليين في جامعة UTHM.">
+      Explore important locations for international students at UTHM.
+    </p>
+
+    <div id="map"></div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-oGqPGL+O8HCbE2WamG9CLOhxXYXoKfXfG61tF8Axy60="
+    crossorigin=""
+  ></script>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-  <!-- Map Script -->
   <script>
-    // Initialize map
-    var map = L.map('map').setView([1.8652, 103.0836], 13); // UTHM coordinates
+    // Initialize map centered at UTHM coordinates (example: Batu Pahat)
+    const map = L.map('map').setView([1.8554, 103.0644], 15);
 
     // Add OpenStreetMap tiles
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
       attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    // Locate Me functionality
-    document.getElementById('locate-btn').addEventListener('click', function() {
-      map.locate({ setView: true, maxZoom: 16 });
+    // Locations data with English and Arabic names
+    const locations = [
+      {
+        coords: [1.8547, 103.0643],
+        name_en: 'UTHM Main Campus',
+        name_ar: 'الحرم الرئيسي لجامعة UTHM',
+        description_en: 'Main campus of Universiti Tun Hussein Onn Malaysia.',
+        description_ar: 'الحرم الرئيسي لجامعة تون حسين أون ماليزيا.'
+      },
+      {
+        coords: [1.8560, 103.0650],
+        name_en: 'On-Campus Housing',
+        name_ar: 'السكن داخل الحرم',
+        description_en: 'Student hostels and residential colleges inside campus.',
+        description_ar: 'المهاجع والكليات السكنية داخل الحرم الجامعي.'
+      },
+      {
+        coords: [1.8600, 103.0600],
+        name_en: 'Off-Campus Housing',
+        name_ar: 'السكن خارج الحرم',
+        description_en: 'Nearby apartments and hostels outside the university area.',
+        description_ar: 'الشقق والمهاجع القريبة خارج منطقة الجامعة.'
+      },
+      {
+        coords: [1.8530, 103.0610],
+        name_en: 'Bus Station',
+        name_ar: 'محطة الحافلات',
+        description_en: 'Public transport station near campus.',
+        description_ar: 'محطة النقل العام بالقرب من الحرم الجامعي.'
+      },
+      {
+        coords: [1.8550, 103.0670],
+        name_en: 'Parking Lot',
+        name_ar: 'موقف السيارات',
+        description_en: 'Parking space for students and visitors.',
+        description_ar: 'موقف السيارات للطلاب والزوار.'
+      }
+    ];
 
-      map.on('locationfound', function(e) {
-        L.marker(e.latlng).addTo(map)
-          .bindPopup("You are here!").openPopup();
-      });
-
-      map.on('locationerror', function() {
-        alert("Location access denied.");
+    // Add markers to map
+    locations.forEach(loc => {
+      const marker = L.marker(loc.coords).addTo(map);
+      marker.bindPopup(`<b>${loc.name_en}</b><br>${loc.description_en}`);
+      marker.name_en = loc.name_en;
+      marker.name_ar = loc.name_ar;
+      marker.description_en = loc.description_en;
+      marker.description_ar = loc.description_ar;
+      marker.on('click', function() {
+        if (document.documentElement.lang === 'ar') {
+          this.getPopup().setContent(`<b>${this.name_ar}</b><br>${this.description_ar}`).openOn(map);
+        } else {
+          this.getPopup().setContent(`<b>${this.name_en}</b><br>${this.description_en}`).openOn(map);
+        }
       });
     });
+
+    // Language toggle logic
+    const langToggle = document.getElementById('langToggle');
+    langToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      const html = document.documentElement;
+      if (html.lang === 'en') {
+        html.lang = 'ar';
+        html.dir = 'rtl';
+        langToggle.textContent = 'English';
+        translatePage('ar');
+      } else {
+        html.lang = 'en';
+        html.dir = 'ltr';
+        langToggle.textContent = 'عربي';
+        translatePage('en');
+      }
+    });
+
+    // Translate static texts on the page
+    function translatePage(lang) {
+      // Translate nav links
+      document.querySelectorAll('#nav-links a').forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+      });
+
+      // Translate page title and description
+      document.getElementById('pageTitle').textContent = document.getElementById('pageTitle').getAttribute(`data-${lang}`);
+      document.getElementById('description').textContent = document.getElementById('description').getAttribute(`data-${lang}`);
+
+      // Update popup content if any popup is open
+      map.eachLayer(layer => {
+        if (layer instanceof L.Marker && layer.getPopup() && layer.getPopup().isOpen()) {
+          const currentLang = lang;
+          if (currentLang === 'ar') {
+            layer.getPopup().setContent(`<b>${layer.name_ar}</b><br>${layer.description_ar}`);
+          } else {
+            layer.getPopup().setContent(`<b>${layer.name_en}</b><br>${layer.description_en}`);
+          }
+        }
+      });
+    }
   </script>
 </body>
 </html>

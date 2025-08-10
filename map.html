@@ -1,46 +1,77 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>الخريطة التفاعلية - ماليزيا</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map - Universities in Malaysia</title>
 
-  <!-- مكتبة Leaflet -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <style>
-    body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
-    #map { height: 100vh; }
-  </style>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+        nav {
+            position: absolute;
+            z-index: 1000;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
 
-<h2 style="text-align:center;">الخريطة التفاعلية - الجامعات في ماليزيا</h2>
-<div id="map"></div>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Malaysian Universities Map</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
 
-<script>
-  // إنشاء الخريطة
-  var map = L.map('map').setView([3.139, 101.6869], 7); // إحداثيات ماليزيا
+    <!-- Map Container -->
+    <div id="map"></div>
 
-  // إضافة خريطة أساسية
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-  // الجامعات
-  var universities = [
-    { name: "جامعة UTM", coords: [1.5594, 103.6373] },
-    { name: "جامعة UTHM", coords: [1.8610, 103.0851] },
-    { name: "جامعة UM", coords: [3.1209, 101.6531] }
-  ];
+    <script>
+        // Initialize map centered in Malaysia
+        var map = L.map('map').setView([4.2105, 101.9758], 6);
 
-  universities.forEach(function(uni) {
-    L.marker(uni.coords).addTo(map)
-      .bindPopup(`<b>${uni.name}</b>`);
-  });
-</script>
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // University locations
+        var universities = [
+            { name: "Universiti Teknologi Malaysia (UTM)", coords: [1.561111, 103.638889] },
+            { name: "Universiti Tun Hussein Onn Malaysia (UTHM)", coords: [1.8575, 103.085] },
+            { name: "Universiti Malaya (UM)", coords: [3.1201, 101.6544] }
+        ];
+
+        // Add markers to the map
+        universities.forEach(function(uni) {
+            L.marker(uni.coords)
+                .addTo(map)
+                .bindPopup(`<b>${uni.name}</b>`)
+                .openPopup();
+        });
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

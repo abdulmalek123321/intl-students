@@ -5,13 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Malaysian Universities - ISES</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style>
-    .card:hover {
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      cursor: pointer;
-      transition: box-shadow 0.3s ease-in-out;
-    }
-  </style>
 </head>
 <body>
 
@@ -35,85 +28,56 @@
     </div>
   </nav>
 
-  <!-- Search Bar -->
-  <div class="container mt-4 mb-3">
-    <input type="text" id="searchInput" class="form-control" placeholder="Search universities..." aria-label="Search universities" />
-  </div>
-
-  <!-- University List -->
-  <div class="container mb-5">
+  <!-- Page Header -->
+  <div class="container mt-5">
     <h2 class="text-center mb-4">Top Universities in Malaysia</h2>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="universitiesContainer">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
-      <!-- University Card Template -->
-      <div class="col university-card" data-name="universiti tun hussein onn malaysia uthm" data-location="johor">
-        <a href="university-details/uthm.html" class="card h-100 text-decoration-none text-dark">
+      <!-- University 1 -->
+      <div class="col">
+        <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title">Universiti Tun Hussein Onn Malaysia (UTHM)</h5>
             <p class="card-text">A public technical university located in Johor, focusing on engineering and technology.</p>
-            <p class="mb-1"><strong>Location:</strong> Johor</p>
-            <p><strong>Type:</strong> Public Technical University</p>
+            <a href="university-details/uthm.html" class="btn btn-primary">More Details</a>
           </div>
-        </a>
+        </div>
       </div>
 
-      <div class="col university-card" data-name="universiti malaya um" data-location="kuala lumpur">
-        <a href="university-details/um.html" class="card h-100 text-decoration-none text-dark">
+      <!-- University 2 -->
+      <div class="col">
+        <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title">Universiti Malaya (UM)</h5>
             <p class="card-text">Malaysia's oldest university, ranked among the top in Asia.</p>
-            <p class="mb-1"><strong>Location:</strong> Kuala Lumpur</p>
-            <p><strong>Type:</strong> Public Research University</p>
+            <a href="university-details/um.html" class="btn btn-primary">More Details</a>
           </div>
-        </a>
+        </div>
       </div>
 
-      <div class="col university-card" data-name="universiti teknologi malaysia utm" data-location="johor kuala lumpur">
-        <a href="university-details/utm.html" class="card h-100 text-decoration-none text-dark">
+      <!-- University 3 -->
+      <div class="col">
+        <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title">Universiti Teknologi Malaysia (UTM)</h5>
             <p class="card-text">Top-ranked for engineering and technology, located in Johor and Kuala Lumpur.</p>
-            <p class="mb-1"><strong>Location:</strong> Johor & Kuala Lumpur</p>
-            <p><strong>Type:</strong> Public Technical University</p>
+            <a href="university-details/utm.html" class="btn btn-primary">More Details</a>
           </div>
-        </a>
+        </div>
       </div>
 
-      <!-- Add more universities here similarly -->
+      <!-- Add more universities here if needed -->
 
     </div>
   </div>
 
   <!-- Footer -->
-  <footer class="bg-light text-center py-4">
+  <footer class="bg-light text-center py-4 mt-5">
     <div class="container">
       <p class="mb-0">© 2025 ISES - Built with ❤️ by Abdulmalek Taha</p>
     </div>
   </footer>
 
-  <!-- Bootstrap JS and dependencies -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Search Script -->
-  <script>
-    const searchInput = document.getElementById('searchInput');
-    const universityCards = document.querySelectorAll('.university-card');
-
-    searchInput.addEventListener('input', () => {
-      const filter = searchInput.value.toLowerCase();
-
-      universityCards.forEach(card => {
-        const name = card.getAttribute('data-name');
-        const location = card.getAttribute('data-location');
-
-        if (name.includes(filter) || location.includes(filter)) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-  </script>
-
 </body>
 </html>
